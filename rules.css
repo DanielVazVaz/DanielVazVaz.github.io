@@ -28,6 +28,18 @@ p {
     border-width: 0.2pc;
     border-style: dashed;
 }
+#contact_me{
+    background-color:#ced3d6
+}
+
+.social img{
+    max-height: 3rem;
+}
+.social a {
+    font-size: 3.5em;
+    margin: 0rem;
+    padding: 1.5rem;
+  }
 
 .paragraph {
     text-align: justify;

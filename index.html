@@ -7,7 +7,7 @@
         <meta name="keywords" content="simulation, optimization, chemical engineering, research, chemical process" />
         <meta
         name="Daniel Vazquez Vazquez"
-        content="Improving complex systems via optimization of black-box, simulated models."
+        content="Modeling and optimization of sustainable Chemical Processes"
         />
         <title>Daniel Vazquez Vazquez</title>
         <!-- LOADING STYLES -->
@@ -29,9 +29,13 @@
         />
         <link type="text/css" rel="stylesheet" href="rules.css" />
         <link rel="stylesheet" href="https://m.w3newbie.com/you-tube.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link type="text/css" rel="stylesheet" href="rules.css" />
         <link type="text/css" rel="stylesheet" href="prism.css" />
         <script src="prism.js"></script>
+        <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     </head>
     <body>
         <div id="top_section">
@@ -52,7 +56,7 @@
                         <a class="nav-link" href="#Code"><i class="fa fa-fw fa-laptop"></i></i> Code and projects</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#publications"><i class="fa fa-fw fa-book"></i> Publications</a>
+                        <a class="nav-link" href="#Publications"><i class="fa fa-fw fa-book"></i> Publications</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="#contact_me"><i class="fa fa-fw fa-envelope"></i> Contact me</a>
@@ -76,9 +80,13 @@
                         <img src="figs/Foto_Verde.jpg" class="img-fluid img_profile" alt="Picture of me">
                     </div>
                     <div class="col-sm-8">
-                        <p class="lead"> 
-                            Hello, my name is Daniel Vázquez Vázquez. You can contact me by asdasd
-                            <br>
+                        <p class="lead" style="text-align:justify"> 
+                            Hello, my name is Daniel Vázquez Vázquez. I am a researcher at ETH Zürich, with a  background
+                            on Chemical and Process Engineering. My research focuses on process modeling and optimization, using both commercial simulation solvers
+                            such as Aspen PLUS/HYSYS and mathematical algebraic formulation. To add to these fields, I also try to use machine learning tools together
+                            with sustainability assessment methodologies in order to optimize  not only one, but multiple objectives. For any question or comment,
+                            please do not hesitate to contact me!  
+                            <br><br>
                             <a href="#contact_me"><button type="button" target="_blank" class="btn btn-outline-secondary btn-md">Contact me</button></a>
                         </p>
                     </div>
@@ -136,7 +144,8 @@
                 <div class="paragraph">
                     My work involves mostly optimization and modeling of chemical processes. In order to represent these
                     processes, it is common to use process simulation software, such as Aspen HYSYS, Aspen Plus, DWSIM, gPROMS, etc. Therefore,
-                    it is important to connect these software to data treatment and visualization tools. For this, two main packages are in development.
+                    it is important to connect these software to data treatment and visualization tools. For this, two main (toy) packages are in development,
+                    in order to reduce the amount of boilerplate code to connect with the two most common process simulators.
                     
                 </div>
                 <div class="block">
@@ -148,7 +157,7 @@
                     The interface works through the pywin32 package in order to easily communicate between Python and Aspen HYSYS. In order to install
                     it, please follow the instructions in the <a href="https://github.com/DanielVazVaz/PySIS" 
                     target="blank">repository</a><br>
-                    <button class="collapsible">Easy example to use </button>
+                    <button class="collapsible">Easy example</button>
                     <div class="row content">
                         <div class="col-sm-7">
                         <pre><code class="language-python" style="white-space: pre-line"># Import the main class and load the file
@@ -202,7 +211,7 @@
                     The interface works through the pywin32 package in order to easily communicate between Python and Aspen Plus. In order to install
                     it, please follow the instructions in the <a href="https://github.com/DanielVazVaz/PyAPLUS" 
                     target="blank">repository</a>. This one is certainly less developed than the HYSYS one.<br>
-                    <button class="collapsible">Easy example to use </button>
+                    <button class="collapsible">Easy example</button>
                     <div class="row content">
                         <div class="col-sm-7">
                         <pre><code class="language-python" style="white-space: pre-line"># Import the main class and load the file
@@ -248,9 +257,51 @@
                         </div>
                     </div>
                 </div>
+                <br>
+                <div class="paragraph">
+                    In the same manner, I tend to use mathematical optimization software to optimize the different models I come across. The most
+                    used by me is GAMS. It is very elegant in how the mathematical equations are defined, but lacks the ability to perform data treatment
+                    in an efficient manner. For this, I generated another toy package that reads the <code>.gdx</code> generated by GAMS and transforms it
+                    in a Pandas dataframe in Python. Or you can use Pyomo. Or Jump, which is even cooler.
+                </div>
+                <br>
+                <div class="block">
+                    <h3 style="font-style: italic;" style="padding-left: 1rem;">
+                        <a href="https://github.com/DanielVazVaz/PyGDX" 
+                        target="blank"><code style="color: rgb(255, 0, 0); font-style: normal;"
+                        >PyGDX</code></a>:  Python-based reader of GDX files
+                    </h3>
+                    The interface works through the Python API that GAMS provides. In order to install
+                    it, please follow the instructions in the <a href="https://github.com/DanielVazVaz/PyGDX" 
+                    target="blank">repository</a>.<br>
+                    <button class="collapsible">Easy example</button>
+                    <div class="row content">
+                        <div class="col-sm-10">
+                        <pre><code class="language-python" style="white-space: pre-line"># Import the main class and load the file
+                            import pygdx.core as gdx 
+                            import pandas as pd 
+
+                            # State the path to the GDX file and to GAMS executable
+                            GAMS_FOLDER = r"C:\GAMS\38"    # May look something like this.
+                            GDX_File    = r"GDX_File.gdx"
+
+                            # Generate an instance of the class and use the read method
+                            results = gdx.GDXFile(gdx_path= GDX_File, gams_path=GAMS_FOLDER)
+                            results.read_gdx()
+
+                            # You can now read sets, parameters and variables dictionaries
+                            sets = results.sets_df
+                            parameters = results.parameters_df 
+                            variables = results.variables_df 
+
+                            </code></pre>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <br><br>
+        <!-- PUBLICATIONS -->
         <div id="Publications">
             <div class="container-fluid">
                 <div class="row welcome text-center">
@@ -259,11 +310,334 @@
                     </div>
                     <hr class="light-90">
                 </div>
-                TBD
+                <table id="publications_table" class="container_fluid">
+                    <colgroup>
+                        <col class="thirty" />
+                        <col class="ten" />
+                        <col class="ten" />
+                    </colgroup>
+                    <thread>
+                        <tr>
+                            <th>Title <i class="fa fa-fw fa-sort"></i></td>
+                            <th>Citations <i class="fa fa-fw fa-sort"></i></td>
+                            <th>Year <i class="fa fa-fw fa-sort"></i></td>
+                        </tr>
+                    </thread>
+                    <tbody>
+                        <tr class="item">
+                            <td class="pub_tab_col0">
+                                <a href="https://pubs.acs.org/doi/full/10.1021/acsomega.2c04736"
+                                target="_blank"
+                                >Bayesian Symbolic Learning to Build Analytical Correlations 
+                                from Rigorous Process Simulations: Application to CO2 Capture Technologies</a
+                                ><br>
+                                <p>
+                                Valentina Negri, Daniel Vázquez, Marta Sales-Pardo, 
+                                Roger Guimerà, and Gonzalo Guillén-Gosálbez
+                                </p>
+                                <p>
+                                ACS Omega 2022, 7, 45, 41147–41164
+                                </p>
+                            </td>
+                            <td class="pub_tab_col">
+                                <a
+                                  href="https://scholar.google.com/citations?view_op=list_works&hl=es&hl=es&user=2zlldfEAAAAJ&sortby=pubdate"
+                                  target="_blank"
+                                  >0</a
+                                >
+                            </td>
+                            <td class="pub_tab_col">
+                                <span>2022</span>
+                            </td>
+                        </tr>
 
+                        <tr class="item">
+                            <td class="pub_tab_col0">
+                                <a href="https://www.sciencedirect.com/science/article/pii/S2352550921003729"
+                                target="_blank"
+                                >Automatic modeling of socioeconomic drivers of energy consumption and pollution 
+                                using Bayesian symbolic regression</a
+                                ><br>
+                                <p>
+                                Daniel Vázquez, Roger Guimerà, Marta Sales-Pardo, Gonzalo Guillén-Gosálbez
+                                </p>
+                                <p>
+                                Sustainable Production and Consumption,
+                                Volume 30, March 2022, Pages 596-607
+                                </p>
+                            </td>
+                            <td class="pub_tab_col">
+                                <a
+                                  href="https://scholar.google.com/scholar?oi=bibs&hl=es&cites=10043176624714864030"
+                                  target="_blank"
+                                  >3</a
+                                >
+                            </td>
+                            <td class="pub_tab_col">
+                                <span>2022</span>
+                            </td>
+                        </tr>
 
+                        <tr class="item">
+                            <td class="pub_tab_col0">
+                                <a href="https://www.sciencedirect.com/science/article/pii/S0009250921004565"
+                                target="_blank"
+                                >Process design within planetary boundaries: Application to CO2 based methanol production</a
+                                ><br>
+                                <p>
+                                Daniel Vázquez, Gonzalo Guillén-Gosálbez
+                                </p>
+                                <p>
+                                Chemical Engineering Science,
+                                Volume 246, December 2021, 116891
+                                </p>
+                            </td>
+                            <td class="pub_tab_col">
+                                <a
+                                  href="https://scholar.google.com/scholar?oi=bibs&hl=es&cites=9907362456614080907"
+                                  target="_blank"
+                                  >11</a
+                                >
+                            </td>
+                            <td class="pub_tab_col">
+                                <span>2021</span>
+                            </td>
+                        </tr>
+
+                        <tr class="item">
+                            <td class="pub_tab_col0">
+                                <a href="https://www.nature.com/articles/s41467-021-26680-3"
+                                target="_blank"
+                                >Delaying carbon dioxide removal in the European Union puts climate targets at risk</a
+                                ><br>
+                                <p>
+                                Daniel Vázquez, Ángel Galán-Martín, Selene Cobo, Niall Mac Dowell, José Antonio Caballero, Gonzalo Guillén-Gosálbez
+                                </p>
+                                <p>
+                                Nature Communications,
+                                12, 6490, 2021
+                                </p>
+                            </td>
+                            <td class="pub_tab_col">
+                                <a
+                                  href="https://scholar.google.com/scholar?oi=bibs&hl=es&cites=503243984985114065"
+                                  target="_blank"
+                                  >13</a
+                                >
+                            </td>
+                            <td class="pub_tab_col">
+                                <span>2021</span>
+                            </td>
+                        </tr>
+
+                        <tr class="item">
+                            <td class="pub_tab_col0">
+                                <a href="https://www.sciencedirect.com/science/article/pii/S009813542100034X"
+                                target="_blank"
+                                >Mixed integer non-linear programming model for reliable and safer design at an early stage</a
+                                ><br>
+                                <p>
+                                Daniel Vázquez, Rubén Ruiz-Femenia, José Antonio Caballero
+                                </p>
+                                <p>
+                                Computers & Chemical Engineering,
+                                147, 107256, 2021
+                                </p>
+                            </td>
+                            <td class="pub_tab_col">
+                                <a
+                                  href="https://scholar.google.com/scholar?oi=bibs&hl=es&cites=10214327897682262605"
+                                  target="_blank"
+                                  >3</a
+                                >
+                            </td>
+                            <td class="pub_tab_col">
+                                <span>2021</span>
+                            </td>
+                        </tr>
+
+                        <tr class="item">
+                            <td class="pub_tab_col0">
+                                <a href="https://www.sciencedirect.com/science/article/pii/S2212982021000032"
+                                target="_blank"
+                                >Alternative carbon dioxide utilization in dimethyl carbonate 
+                                synthesis and comparison with current technologies</a
+                                ><br>
+                                <p>
+                                Juan Diego Medrano-García, Juan Javaloyes-Antón, Daniel Vázquez, Rubén Ruiz-Femenia, José Antonio Caballero
+                                </p>
+                                <p>
+                                Journal of CO2 Utilization,
+                                45, 101436, 2021
+                                </p>
+                            </td>
+                            <td class="pub_tab_col">
+                                <a
+                                  href="https://scholar.google.com/scholar?oi=bibs&hl=es&cites=18103721258186836970"
+                                  target="_blank"
+                                  >6</a
+                                >
+                            </td>
+                            <td class="pub_tab_col">
+                                <span>2021</span>
+                            </td>
+                        </tr>
+
+                        <tr class="item">
+                            <td class="pub_tab_col0">
+                                <a href="https://www.sciencedirect.com/science/article/pii/S0098135419303187"
+                                target="_blank"
+                                >OFISI, a novel optimizable inherent safety index based on fuzzy logic</a
+                                ><br>
+                                <p>
+                                Daniel Vázquez, Rubén Ruiz-Femenia, José Antonio Caballero
+                                </p>
+                                <p>
+                                Computers & Chemical Engineering,
+                                129, 106526, 2019
+                                </p>
+                            </td>
+                            <td class="pub_tab_col">
+                                <a
+                                  href="https://scholar.google.com/scholar?oi=bibs&hl=es&cites=14067058067790750294"
+                                  target="_blank"
+                                  >8</a
+                                >
+                            </td>
+                            <td class="pub_tab_col">
+                                <span>2019</span>
+                            </td>
+                        </tr>
+
+                        <tr class="item">
+                            <td class="pub_tab_col0">
+                                <a href="https://www.sciencedirect.com/science/article/pii/S0098135418303843"
+                                target="_blank"
+                                >MILP models for objective reduction in multi-objective optimization: 
+                                Error measurement considerations and non-redundancy ratio</a
+                                ><br>
+                                <p>
+                                Daniel Vázquez, Rubén Ruiz-Femenia, José Antonio Caballero
+                                </p>
+                                <p>
+                                Computers & Chemical Engineering,
+                                115, 323-332, 2018
+                                </p>
+                            </td>
+                            <td class="pub_tab_col">
+                                <a
+                                  href="https://scholar.google.com/scholar?oi=bibs&hl=es&cites=14436864252907346799"
+                                  target="_blank"
+                                  >3</a
+                                >
+                            </td>
+                            <td class="pub_tab_col">
+                                <span>2018</span>
+                            </td>
+                        </tr>
+
+                        <tr class="item">
+                            <td class="pub_tab_col0">
+                                <a href="https://pubs.acs.org/doi/full/10.1021/acs.iecr.8b00577"
+                                target="_blank"
+                                >Multiobjective early design of complex distillation sequences 
+                                considering economic and inherent safety criteria</a
+                                ><br>
+                                <p>
+                                Daniel Vázquez, Rubén Ruiz-Femenia, Laureano Jiménez, José Antonio Caballero
+                                </p>
+                                <p>
+                                Industrial & Engineering Chemistry Research,
+                                57, 20, 6992-7007, 2018
+                                </p>
+                            </td>
+                            <td class="pub_tab_col">
+                                <a
+                                  href="https://scholar.google.com/scholar?oi=bibs&hl=es&cites=6787594434051287310"
+                                  target="_blank"
+                                  >18</a
+                                >
+                            </td>
+                            <td class="pub_tab_col">
+                                <span>2018</span>
+                            </td>
+                        </tr>
+
+                        <tr class="item">
+                            <td class="pub_tab_col0">
+                                <a href="https://www.sciencedirect.com/science/article/pii/S0098135417303769"
+                                target="_blank"
+                                >MILP method for objective reduction in multi-objective optimization</a
+                                ><br>
+                                <p>
+                                Daniel Vázquez, María José Fernández-Torres, Rubén Ruiz-Femenia, Laureano Jiménez, José Antonio Caballero
+                                </p>
+                                <p>
+                                Computers & Chemical Engineering,
+                                108, 382-394, 2018
+                                </p>
+                            </td>
+                            <td class="pub_tab_col">
+                                <a
+                                  href="https://scholar.google.com/scholar?oi=bibs&hl=es&cites=10092711085602902324"
+                                  target="_blank"
+                                  >14</a
+                                >
+                            </td>
+                            <td class="pub_tab_col">
+                                <span>2018</span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>  
             </div>
         </div>
+        <br>
+        <!-- FOOTER-->
+        <footer>
+            <div id="contact_me" class="container-fluid">
+              <div class="row text-center">
+                <div class="col-md-4" style="padding-bottom: 0;">
+                  <!--
+                  <p>+55(44)99989-0190</p>
+                  <p>lfs.francisco.95@gmail.com</p>
+                  <p>Maringá, Paraná, Brazil.</p>
+                  -->
+                  <p>
+                    <!-- Universidad de Alicante -->
+                    <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4422.891419383276!2d-0.5188373431186298!3d38.38469241171212!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6236bb72bf619b%3A0x506e11c403138428!2sUniversity%20of%20Alicante!5e0!3m2!1sen!2ses!4v1642579434472!5m2!1sen!2ses"  -->
+                    <!-- ETH -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2700.1716957347394!2d8.503990515815778!3d47.40859210962824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a556761e4d5%3A0x4f0d783ed8c82eea!2sETH%20H%C3%B6nggerberg!5e0!3m2!1sen!2ses!4v1664966647735!5m2!1sen!2ses" 
+                      width="300" height="200" 
+                      style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                  </p>
+                </div>
+                <div class="col-md-8" style="padding-bottom: 0;">
+                  <hr class="light-90" style="border-color: antiquewhite;">
+                  <h4>Contact me</h4>
+                  <hr class="light-90" style="border-color: antiquewhite">
+                  <div class="col-12 social padding">
+                    <!--<a href="https://facebook.com/lfchico" target="blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://instagram.com/lucas.francisco.s" target="blank"><i class="fab fa-instagram"></i></a>-->
+                    <a href="https://scholar.google.com/citations?hl=es&user=2zlldfEAAAAJ&view_op=list_works&sortby=pubdate" target="blank"><i class="ai ai-google-scholar-square"></i></a>
+                    <a href="https://github.com/DanielVazVaz" target="blank"><i class="fab fa-github"></i></a>
+                    <a href="mailto:danielvazquez150791@gmail.com"><i class="fa fa-envelope"></i></a>
+                  </div>
+                  <!--
+                  <a  aria-current="page" href="#"><p><i class="fa fa-fw fa-home"></i> Home</p></a>
+                  <a  href="#section_projects"><p><i class="fa fa-fw fa-laptop"></i> Projects</p></a>
+                  <a  href="#section_publications"><p><i class="fa fa-fw fa-book"></i> Publications</p></a>
+                  <a  href="mailto:lfs.francisco.95@gmail.com"><p><i class="fa fa-fw fa-envelope"></i> Contact me</p></a>
+                  -->
+                </div>
+                <div class="col-12" style="padding-bottom: 0;">
+                  <hr class="light-100" style="border-color: antiquewhite;">
+                  <p>&copy; DanielVazVaz.github.io</p>
+                </div>
+              </div>
+            </div>
+          </footer>
 
 <!-- SCRIPT FOR COLLAPSIBLES-->
 <script>
